@@ -1,0 +1,2065 @@
+{
+  "checked_at": "2026-09-22T17:22:10.664870+00:00",
+  "source": "/data/oss_bucket_0/beifen/home/dujingrun.djr/code/3dgs/FastGS/data/perspective",
+  "inventory": {
+    "images": {
+      "expected": 90360,
+      "present": 90360,
+      "missing_count": 0,
+      "missing_first": [],
+      "zero_bytes_count": 0,
+      "zero_bytes_first": [],
+      "extra_count": 0,
+      "bytes": 31756114884
+    },
+    "mask_sam3": {
+      "expected": 90360,
+      "present": 90360,
+      "missing_count": 0,
+      "missing_first": [],
+      "zero_bytes_count": 0,
+      "zero_bytes_first": [],
+      "extra_count": 0,
+      "bytes": 96286838
+    },
+    "semantic_weights": {
+      "expected": 90360,
+      "present": 90360,
+      "missing_count": 0,
+      "missing_first": [],
+      "zero_bytes_count": 0,
+      "zero_bytes_first": [],
+      "extra_count": 0,
+      "bytes": 599108846
+    }
+  },
+  "sample_count": 256,
+  "samples": [
+    {
+      "name": "L2PRO/camera_0/1778471306.866887_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.2756811259025271,
+      "semantic_weights": 0.2669054602888087
+    },
+    {
+      "name": "L2PRO/camera_0/1778471375.524328_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471402.907364_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.22179884927797833,
+      "semantic_weights": 0.2181577166064982
+    },
+    {
+      "name": "L2PRO/camera_0/1778471426.492793_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471452.076920_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.003593185920577617,
+      "semantic_weights": 0.004161495938628159
+    },
+    {
+      "name": "L2PRO/camera_0/1778471476.761639_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.05258101851851852,
+      "semantic_weights": 0.17241126543209875
+    },
+    {
+      "name": "L2PRO/camera_0/1778471501.846118_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471525.231648_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.13023606723826714,
+      "semantic_weights": 0.12721824232851986
+    },
+    {
+      "name": "L2PRO/camera_0/1778471548.717116_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471572.302524_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471595.787998_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.3567939814814815,
+      "semantic_weights": 0.4611728395061728
+    },
+    {
+      "name": "L2PRO/camera_0/1778471619.973039_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0011817463898916968,
+      "semantic_weights": 0.003349221570397112
+    },
+    {
+      "name": "L2PRO/camera_0/1778471643.658389_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.038678925992779785,
+      "semantic_weights": 0.03761845667870036
+    },
+    {
+      "name": "L2PRO/camera_0/1778471666.943989_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471690.629340_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0005302346570397112,
+      "semantic_weights": 0.00033985785198555957
+    },
+    {
+      "name": "L2PRO/camera_0/1778471713.914938_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.10105324074074074,
+      "semantic_weights": 0.09863811728395061
+    },
+    {
+      "name": "L2PRO/camera_0/1778471737.600296_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471764.183855_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.05790980370036101,
+      "semantic_weights": 0.05650806633574007
+    },
+    {
+      "name": "L2PRO/camera_0/1778471788.069085_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471811.554560_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471835.040039_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.09858796296296296,
+      "semantic_weights": 0.09614969135802469
+    },
+    {
+      "name": "L2PRO/camera_0/1778471859.125147_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471882.510689_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.02385350857400722,
+      "semantic_weights": 0.0225716380866426
+    },
+    {
+      "name": "L2PRO/camera_0/1778471906.595798_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471930.680907_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778471955.165769_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.06551311728395062,
+      "semantic_weights": 0.06325231481481482
+    },
+    {
+      "name": "L2PRO/camera_0/1778471978.851117_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472002.936227_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0018938966606498195,
+      "semantic_weights": 0.0014764778880866425
+    },
+    {
+      "name": "L2PRO/camera_0/1778472026.721524_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.008641975308641974,
+      "semantic_weights": 0.0075887345679012345
+    },
+    {
+      "name": "L2PRO/camera_0/1778472050.207004_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472074.292117_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.08804398148148149,
+      "semantic_weights": 0.16921296296296295
+    },
+    {
+      "name": "L2PRO/camera_0/1778472099.276669_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472122.962020_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0220540952166065,
+      "semantic_weights": 0.020801838898916968
+    },
+    {
+      "name": "L2PRO/camera_0/1778472146.947202_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472170.632553_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.058998476985559566,
+      "semantic_weights": 0.056960740072202164
+    },
+    {
+      "name": "L2PRO/camera_0/1778472194.217972_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472218.003291_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472241.988438_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.10886574074074074,
+      "semantic_weights": 0.10601851851851851
+    },
+    {
+      "name": "L2PRO/camera_0/1778472266.873054_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472291.957545_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.13419026398916967,
+      "semantic_weights": 0.12983698104693142
+    },
+    {
+      "name": "L2PRO/camera_0/1778472315.243150_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472338.928508_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472362.314048_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.11505401234567901,
+      "semantic_weights": 0.11334490740740741
+    },
+    {
+      "name": "L2PRO/camera_0/1778472386.099357_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472409.684763_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.025193197202166066,
+      "semantic_weights": 0.023742102888086643
+    },
+    {
+      "name": "L2PRO/camera_0/1778472438.566905_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472465.650169_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472489.235579_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.09709876543209876,
+      "semantic_weights": 0.09441358024691358
+    },
+    {
+      "name": "L2PRO/camera_0/1778472513.020873_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472536.506357_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.008387861010830324,
+      "semantic_weights": 0.007372518050541516
+    },
+    {
+      "name": "L2PRO/camera_0/1778472559.791977_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472583.677193_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0028979580324909747,
+      "semantic_weights": 0.0037863831227436823
+    },
+    {
+      "name": "L2PRO/camera_0/1778472608.761667_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.061967592592592595,
+      "semantic_weights": 0.05950231481481481
+    },
+    {
+      "name": "L2PRO/camera_0/1778472633.146612_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472659.030610_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.12691928023465704,
+      "semantic_weights": 0.12439220442238268
+    },
+    {
+      "name": "L2PRO/camera_0/1778472682.616024_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0039004629629629628,
+      "semantic_weights": 0.002982253086419753
+    },
+    {
+      "name": "L2PRO/camera_0/1778472707.000954_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0014764778880866425
+    },
+    {
+      "name": "L2PRO/camera_0/1778472730.086681_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.08725694444444444,
+      "semantic_weights": 0.08347993827160494
+    },
+    {
+      "name": "L2PRO/camera_0/1778472754.071851_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0027188628158844766,
+      "semantic_weights": 0.0022450361010830323
+    },
+    {
+      "name": "L2PRO/camera_0/1778472777.557341_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.08998476985559567,
+      "semantic_weights": 0.08744641245487364
+    },
+    {
+      "name": "L2PRO/camera_0/1778472801.042814_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472824.928047_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472848.213652_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.07034722222222223,
+      "semantic_weights": 0.06830246913580247
+    },
+    {
+      "name": "L2PRO/camera_0/1778472872.398702_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472895.784243_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.13738718411552348,
+      "semantic_weights": 0.1348206227436823
+    },
+    {
+      "name": "L2PRO/camera_0/1778472919.269720_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778472958.245619_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.001040726534296029
+    },
+    {
+      "name": "L2PRO/camera_0/1778472982.330732_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473006.415839_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473030.900701_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.040420524691358026,
+      "semantic_weights": 0.037642746913580244
+    },
+    {
+      "name": "L2PRO/camera_0/1778473054.985810_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473078.571229_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473102.456460_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473126.141821_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473150.426806_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473174.611856_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473200.695731_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473224.381086_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473248.266320_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473271.751837_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473295.637037_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473319.222459_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473343.407507_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473367.392679_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473390.778223_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473414.863327_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473438.448754_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473461.734358_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473488.917553_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473517.899638_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.05209104938271605,
+      "semantic_weights": 0.06026234567901235
+    },
+    {
+      "name": "L2PRO/camera_0/1778473542.184623_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473567.169174_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0029261620036101083,
+      "semantic_weights": 0.0025919449458483754
+    },
+    {
+      "name": "L2PRO/camera_0/1778473593.153107_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473616.838465_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473640.124068_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0698070987654321,
+      "semantic_weights": 0.06702546296296297
+    },
+    {
+      "name": "L2PRO/camera_0/1778473664.009302_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473690.892682_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.027340929602888087,
+      "semantic_weights": 0.024992949007220218
+    },
+    {
+      "name": "L2PRO/camera_0/1778473714.877865_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473738.663147_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.008808100180505415,
+      "semantic_weights": 0.008014158393501804
+    },
+    {
+      "name": "L2PRO/camera_0/1778473762.548384_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473786.433619_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473810.318852_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473834.603839_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473858.189258_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.003501523014440433,
+      "semantic_weights": 0.00810159070397112
+    },
+    {
+      "name": "L2PRO/camera_0/1778473881.574801_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473905.559973_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473929.145398_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.008190586419753086
+    },
+    {
+      "name": "L2PRO/camera_0/1778473953.230505_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778473977.015801_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.02750028203971119,
+      "semantic_weights": 0.026374943592057762
+    },
+    {
+      "name": "L2PRO/camera_0/1778474000.601219_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474023.986769_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474047.372315_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474071.057660_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.008208765794223827,
+      "semantic_weights": 0.0080762071299639
+    },
+    {
+      "name": "L2PRO/camera_0/1778474094.942901_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.02599418998194946,
+      "semantic_weights": 0.024062217960288807
+    },
+    {
+      "name": "L2PRO/camera_0/1778474118.128568_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474145.511641_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474170.995886_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474199.678153_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474233.757051_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.040100406137184116,
+      "semantic_weights": 0.036721570397111915
+    },
+    {
+      "name": "L2PRO/camera_0/1778474263.138918_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474289.022915_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474313.507777_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.03505015432098765,
+      "semantic_weights": 0.04633487654320988
+    },
+    {
+      "name": "L2PRO/camera_0/1778474346.487387_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474374.769896_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.05194184341155235,
+      "semantic_weights": 0.049331565884476535
+    },
+    {
+      "name": "L2PRO/camera_0/1778474400.853775_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474427.337400_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_0/1778474473.508854_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.16812114197530864,
+      "semantic_weights": 0.16454475308641975
+    },
+    {
+      "name": "L2PRO/camera_0/1778474498.393467_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471306.866887_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471375.524328_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.1149382333032491,
+      "semantic_weights": 0.11131684341155235
+    },
+    {
+      "name": "L2PRO/camera_1/1778471402.907364_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471426.492793_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.003553240740740741
+    },
+    {
+      "name": "L2PRO/camera_1/1778471452.076920_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471476.761639_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.12739583333333335,
+      "semantic_weights": 0.1240162037037037
+    },
+    {
+      "name": "L2PRO/camera_1/1778471501.846118_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.427766809566787,
+      "semantic_weights": 0.42352070171480144
+    },
+    {
+      "name": "L2PRO/camera_1/1778471525.231648_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471548.717116_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471572.302524_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.07987082581227437,
+      "semantic_weights": 0.07680928474729241
+    },
+    {
+      "name": "L2PRO/camera_1/1778471595.787998_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.024185956790123458,
+      "semantic_weights": 0.021828703703703704
+    },
+    {
+      "name": "L2PRO/camera_1/1778471619.973039_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.11064417870036101,
+      "semantic_weights": 0.1077053249097473
+    },
+    {
+      "name": "L2PRO/camera_1/1778471643.658389_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471666.943989_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471690.629340_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471713.914938_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.13242283950617284,
+      "semantic_weights": 0.18188657407407408
+    },
+    {
+      "name": "L2PRO/camera_1/1778471737.600296_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.09480764891696751,
+      "semantic_weights": 0.09316476759927798
+    },
+    {
+      "name": "L2PRO/camera_1/1778471764.183855_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471788.069085_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471811.554560_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471835.040039_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.10255015432098766,
+      "semantic_weights": 0.11272762345679012
+    },
+    {
+      "name": "L2PRO/camera_1/1778471859.125147_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.14067576714801444
+    },
+    {
+      "name": "L2PRO/camera_1/1778471882.510689_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471906.595798_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778471930.680907_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.006059623194945849,
+      "semantic_weights": 0.007330212093862816
+    },
+    {
+      "name": "L2PRO/camera_1/1778471955.165769_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.15628472222222223,
+      "semantic_weights": 0.15255787037037036
+    },
+    {
+      "name": "L2PRO/camera_1/1778471978.851117_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.17728029106498194,
+      "semantic_weights": 0.17446412454873647
+    },
+    {
+      "name": "L2PRO/camera_1/1778472002.936227_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472026.721524_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472050.207004_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472074.292117_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.10829861111111111,
+      "semantic_weights": 0.10494984567901235
+    },
+    {
+      "name": "L2PRO/camera_1/1778472099.276669_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.09477380415162455,
+      "semantic_weights": 0.09279388537906137
+    },
+    {
+      "name": "L2PRO/camera_1/1778472122.962020_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472146.947202_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472170.632553_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472194.217972_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.008614969135802468,
+      "semantic_weights": 0.007577160493827161
+    },
+    {
+      "name": "L2PRO/camera_1/1778472218.003291_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0015089124548736462,
+      "semantic_weights": 0.002120938628158845
+    },
+    {
+      "name": "L2PRO/camera_1/1778472241.988438_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.1430594135802469,
+      "semantic_weights": 0.13890817901234567
+    },
+    {
+      "name": "L2PRO/camera_1/1778472266.873054_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.1122560356498195,
+      "semantic_weights": 0.10649537454873646
+    },
+    {
+      "name": "L2PRO/camera_1/1778472291.957545_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472315.243150_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472338.928508_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472362.314048_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.15080632716049383,
+      "semantic_weights": 0.14787808641975309
+    },
+    {
+      "name": "L2PRO/camera_1/1778472386.099357_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.08904557761732852,
+      "semantic_weights": 0.09133997066787003
+    },
+    {
+      "name": "L2PRO/camera_1/1778472409.684763_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.012107964801444044,
+      "semantic_weights": 0.01070340703971119
+    },
+    {
+      "name": "L2PRO/camera_1/1778472438.566905_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472465.650169_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472489.235579_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.12932484567901234,
+      "semantic_weights": 0.12657407407407406
+    },
+    {
+      "name": "L2PRO/camera_1/1778472513.020873_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.10128751128158844,
+      "semantic_weights": 0.09891978790613719
+    },
+    {
+      "name": "L2PRO/camera_1/1778472536.506357_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472559.791977_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472583.677193_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472608.761667_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.1817091049382716,
+      "semantic_weights": 0.6194753086419753
+    },
+    {
+      "name": "L2PRO/camera_1/1778472633.146612_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.19584273465703972,
+      "semantic_weights": 0.1933988605595668
+    },
+    {
+      "name": "L2PRO/camera_1/1778472659.030610_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472682.616024_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472707.000954_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472730.086681_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.19763503086419754,
+      "semantic_weights": 0.33119984567901234
+    },
+    {
+      "name": "L2PRO/camera_1/1778472754.071851_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.15719060243682312,
+      "semantic_weights": 0.15426162003610108
+    },
+    {
+      "name": "L2PRO/camera_1/1778472777.557341_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472801.042814_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472824.928047_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.00022140117328519856
+    },
+    {
+      "name": "L2PRO/camera_1/1778472848.213652_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.14085648148148147,
+      "semantic_weights": 0.13788194444444443
+    },
+    {
+      "name": "L2PRO/camera_1/1778472872.398702_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.171484375,
+      "semantic_weights": 0.16672777527075813
+    },
+    {
+      "name": "L2PRO/camera_1/1778472895.784243_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472919.269720_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.3094934566787004,
+      "semantic_weights": 0.3035297269855596
+    },
+    {
+      "name": "L2PRO/camera_1/1778472958.245619_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778472982.330732_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473006.415839_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473030.900701_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.012133487654320988
+    },
+    {
+      "name": "L2PRO/camera_1/1778473054.985810_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473078.571229_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473102.456460_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473126.141821_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473150.426806_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473174.611856_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473200.695731_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473224.381086_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473248.266320_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473271.751837_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473295.637037_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473319.222459_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473343.407507_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473367.392679_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473390.778223_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.05465277777777778,
+      "semantic_weights": 0.050652006172839506
+    },
+    {
+      "name": "L2PRO/camera_1/1778473414.863327_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473438.448754_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473461.734358_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.003989197530864197
+    },
+    {
+      "name": "L2PRO/camera_1/1778473488.917553_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473517.899638_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473542.184623_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473567.169174_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473593.153107_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473616.838465_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473640.124068_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.02616898148148148
+    },
+    {
+      "name": "L2PRO/camera_1/1778473664.009302_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473690.892682_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473714.877865_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.02449091832129964,
+      "semantic_weights": 0.02347557536101083
+    },
+    {
+      "name": "L2PRO/camera_1/1778473738.663147_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473762.548384_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473786.433619_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473810.318852_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473834.603839_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.03469652527075812,
+      "semantic_weights": 0.03313120487364621
+    },
+    {
+      "name": "L2PRO/camera_1/1778473858.189258_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473881.574801_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473905.559973_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473929.145398_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473953.230505_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778473977.015801_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474000.601219_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474023.986769_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474047.372315_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.013159722222222222
+    },
+    {
+      "name": "L2PRO/camera_1/1778474071.057660_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.03597416516245487,
+      "semantic_weights": 0.03305223375451263
+    },
+    {
+      "name": "L2PRO/camera_1/1778474094.942901_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474118.128568_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474145.511641_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474170.995886_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.15324845679012344,
+      "semantic_weights": 0.14948688271604937
+    },
+    {
+      "name": "L2PRO/camera_1/1778474199.678153_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474233.757051_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474263.138918_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474289.022915_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474313.507777_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.11499614197530864,
+      "semantic_weights": 0.1180324074074074
+    },
+    {
+      "name": "L2PRO/camera_1/1778474346.487387_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.10404021886281588,
+      "semantic_weights": 0.11469144855595668
+    },
+    {
+      "name": "L2PRO/camera_1/1778474374.769896_0.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474400.853775_3.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.0,
+      "semantic_weights": 0.0
+    },
+    {
+      "name": "L2PRO/camera_1/1778474427.337400_1.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.030604129061371842,
+      "semantic_weights": 0.028962657942238266
+    },
+    {
+      "name": "L2PRO/camera_1/1778474473.508854_4.jpg",
+      "width": 640,
+      "height": 405,
+      "mask_sam3": 0.07607638888888889,
+      "semantic_weights": 0.08290509259259259
+    },
+    {
+      "name": "L2PRO/camera_1/1778474498.393467_2.jpg",
+      "width": 640,
+      "height": 1108,
+      "mask_sam3": 0.21577448104693142,
+      "semantic_weights": 0.21188938402527077
+    }
+  ],
+  "png_validation": "full name/size inventory; stratified PNG decode/CRC/labels/dimensions sample, not full-file decode",
+  "pose_audit": {
+    "subset": 6650,
+    "full": 90360,
+    "missing_subset": [],
+    "max_quaternion_abs_delta": 0.0,
+    "max_translation_abs_delta": 0.0,
+    "camera_ids_match": true,
+    "cameras_bin_identical": true,
+    "initial_ply_sha256": {
+      "sparse/0/points3D.ply": "6a6724925440d344b8b6b331ceff1dd7db03b5e81020d0beb59bc2e8ee924e18",
+      "sparse/0_full/points3D.ply": "4f2742e00656ed2284ddbfd824ecebeaeb4a91d4afeea939224657ff153da398"
+    }
+  },
+  "shard_states": [
+    {
+      "state": "complete",
+      "shard": 0,
+      "shards": 8,
+      "batch_size": 32,
+      "assigned": 11295,
+      "pending": 8788,
+      "completed": 8788,
+      "elapsed_seconds": 3588.297472355014,
+      "images_per_second": 2.4490723156885874,
+      "eta_seconds": 0.0,
+      "checkpoint": "/tmp/sam3.1_multiplex_0.pt",
+      "output_backend": "oss",
+      "inferred": 8788,
+      "submitted": 8788,
+      "upload_queue": 0,
+      "upload_worker_seconds_per_image": 0.10161741004148812,
+      "png_encode_worker_seconds_per_image": 0.007111503539772809,
+      "stage_seconds_per_image": {
+        "read_decode": 0.3114,
+        "image_encoder": 0.0562,
+        "person_decoder": 0.0083,
+        "postprocess": 0.0047,
+        "background_decoder": 0.0243,
+        "upload_wait": 0.0
+      }
+    },
+    {
+      "state": "complete",
+      "shard": 1,
+      "shards": 8,
+      "batch_size": 32,
+      "assigned": 11295,
+      "pending": 8828,
+      "completed": 8828,
+      "elapsed_seconds": 3610.607067744975,
+      "images_per_second": 2.4450182017489865,
+      "eta_seconds": 0.0,
+      "checkpoint": "/tmp/sam3.1_multiplex_1.pt",
+      "output_backend": "oss",
+      "inferred": 8828,
+      "submitted": 8828,
+      "upload_queue": 0,
+      "upload_worker_seconds_per_image": 0.10404524258574359,
+      "png_encode_worker_seconds_per_image": 0.0070887766682137645,
+      "stage_seconds_per_image": {
+        "read_decode": 0.3122,
+        "image_encoder": 0.0562,
+        "person_decoder": 0.0082,
+        "postprocess": 0.0046,
+        "background_decoder": 0.0243,
+        "upload_wait": 0.0
+      }
+    },
+    {
+      "state": "complete",
+      "shard": 2,
+      "shards": 8,
+      "batch_size": 32,
+      "assigned": 11295,
+      "pending": 8815,
+      "completed": 8815,
+      "elapsed_seconds": 3605.762532800989,
+      "images_per_second": 2.4446978745304198,
+      "eta_seconds": 0.0,
+      "checkpoint": "/tmp/sam3.1_multiplex_2.pt",
+      "output_backend": "oss",
+      "inferred": 8815,
+      "submitted": 8815,
+      "upload_queue": 0,
+      "upload_worker_seconds_per_image": 0.10524329852355196,
+      "png_encode_worker_seconds_per_image": 0.0071289659761545054,
+      "stage_seconds_per_image": {
+        "read_decode": 0.3123,
+        "image_encoder": 0.0562,
+        "person_decoder": 0.0082,
+        "postprocess": 0.0046,
+        "background_decoder": 0.0243,
+        "upload_wait": 0.0
+      }
+    },
+    {
+      "state": "complete",
+      "shard": 3,
+      "shards": 8,
+      "batch_size": 32,
+      "assigned": 11295,
+      "pending": 8856,
+      "completed": 8856,
+      "elapsed_seconds": 3615.983957513992,
+      "images_per_second": 2.449125909863977,
+      "eta_seconds": 0.0,
+      "checkpoint": "/tmp/sam3.1_multiplex_3.pt",
+      "output_backend": "oss",
+      "inferred": 8856,
+      "submitted": 8856,
+      "upload_queue": 0,
+      "upload_worker_seconds_per_image": 0.10193328896116759,
+      "png_encode_worker_seconds_per_image": 0.007054619946156578,
+      "stage_seconds_per_image": {
+        "read_decode": 0.3111,
+        "image_encoder": 0.0565,
+        "person_decoder": 0.0083,
+        "postprocess": 0.0046,
+        "background_decoder": 0.0244,
+        "upload_wait": 0.0
+      }
+    },
+    {
+      "state": "complete",
+      "shard": 4,
+      "shards": 8,
+      "batch_size": 32,
+      "assigned": 11295,
+      "pending": 8831,
+      "completed": 8831,
+      "elapsed_seconds": 3609.4188213739835,
+      "images_per_second": 2.4466542778868585,
+      "eta_seconds": 0.0,
+      "checkpoint": "/tmp/sam3.1_multiplex_4.pt",
+      "output_backend": "oss",
+      "inferred": 8831,
+      "submitted": 8831,
+      "upload_queue": 0,
+      "upload_worker_seconds_per_image": 0.10299738868705849,
+      "png_encode_worker_seconds_per_image": 0.007154720132782812,
+      "stage_seconds_per_image": {
+        "read_decode": 0.3121,
+        "image_encoder": 0.0561,
+        "person_decoder": 0.0082,
+        "postprocess": 0.0046,
+        "background_decoder": 0.0242,
+        "upload_wait": 0.0001
+      }
+    },
+    {
+      "state": "complete",
+      "shard": 5,
+      "shards": 8,
+      "batch_size": 32,
+      "assigned": 11295,
+      "pending": 8834,
+      "completed": 8834,
+      "elapsed_seconds": 3610.048189474008,
+      "images_per_second": 2.447058747237148,
+      "eta_seconds": 0.0,
+      "checkpoint": "/tmp/sam3.1_multiplex_5.pt",
+      "output_backend": "oss",
+      "inferred": 8834,
+      "submitted": 8834,
+      "upload_queue": 0,
+      "upload_worker_seconds_per_image": 0.10171273349680827,
+      "png_encode_worker_seconds_per_image": 0.007131379853322402,
+      "stage_seconds_per_image": {
+        "read_decode": 0.3118,
+        "image_encoder": 0.0561,
+        "person_decoder": 0.0082,
+        "postprocess": 0.0047,
+        "background_decoder": 0.0243,
+        "upload_wait": 0.0
+      }
+    },
+    {
+      "state": "complete",
+      "shard": 6,
+      "shards": 8,
+      "batch_size": 32,
+      "assigned": 11295,
+      "pending": 8742,
+      "completed": 8742,
+      "elapsed_seconds": 3570.495399591018,
+      "images_per_second": 2.4483997377510556,
+      "eta_seconds": 0.0,
+      "checkpoint": "/tmp/sam3.1_multiplex_6.pt",
+      "output_backend": "oss",
+      "inferred": 8742,
+      "submitted": 8742,
+      "upload_queue": 0,
+      "upload_worker_seconds_per_image": 0.10395552541765274,
+      "png_encode_worker_seconds_per_image": 0.007144863824235028,
+      "stage_seconds_per_image": {
+        "read_decode": 0.3117,
+        "image_encoder": 0.0561,
+        "person_decoder": 0.0082,
+        "postprocess": 0.0046,
+        "background_decoder": 0.0243,
+        "upload_wait": 0.0
+      }
+    },
+    {
+      "state": "complete",
+      "shard": 7,
+      "shards": 8,
+      "batch_size": 32,
+      "assigned": 11295,
+      "pending": 8810,
+      "completed": 8810,
+      "elapsed_seconds": 3604.094359804003,
+      "images_per_second": 2.444442104029458,
+      "eta_seconds": 0.0,
+      "checkpoint": "/tmp/sam3.1_multiplex_7.pt",
+      "output_backend": "oss",
+      "inferred": 8810,
+      "submitted": 8810,
+      "upload_queue": 0,
+      "upload_worker_seconds_per_image": 0.1027830300482334,
+      "png_encode_worker_seconds_per_image": 0.007125941259688307,
+      "stage_seconds_per_image": {
+        "read_decode": 0.3125,
+        "image_encoder": 0.0561,
+        "person_decoder": 0.0082,
+        "postprocess": 0.0046,
+        "background_decoder": 0.0242,
+        "upload_wait": 0.0
+      }
+    }
+  ],
+  "coverage_complete": true,
+  "all_shards_complete": true
+}

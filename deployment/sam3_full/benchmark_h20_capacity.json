@@ -1,0 +1,95 @@
+{
+  "gpu": "NVIDIA H20",
+  "torch": "2.5.1",
+  "cuda": "12.4",
+  "resolution": 1008,
+  "precision": "bf16",
+  "timing": "preloaded PIL -> batched encoder + 4 batched prompts -> CPU maps; no OSS writes",
+  "results": [
+    {
+      "batch": 256,
+      "ok": false,
+      "error": "CUDA OOM",
+      "peak_allocated_gib": 73.19319677352905
+    },
+    {
+      "batch": 128,
+      "ok": true,
+      "seconds": 12.90808004885912,
+      "images_per_second": 9.916269461879676,
+      "peak_allocated_gib": 61.648263931274414,
+      "peak_reserved_gib": 92.109375
+    },
+    {
+      "batch": 192,
+      "ok": false,
+      "error": "CUDA OOM",
+      "peak_allocated_gib": 75.0138201713562
+    },
+    {
+      "batch": 160,
+      "ok": true,
+      "seconds": 16.001340684480965,
+      "images_per_second": 9.999162142405813,
+      "peak_allocated_gib": 75.92518043518066,
+      "peak_reserved_gib": 90.7265625
+    },
+    {
+      "batch": 176,
+      "ok": false,
+      "error": "CUDA OOM",
+      "peak_allocated_gib": 69.14106512069702
+    },
+    {
+      "batch": 168,
+      "ok": false,
+      "error": "CUDA OOM",
+      "peak_allocated_gib": 66.2067928314209
+    },
+    {
+      "batch": 164,
+      "ok": true,
+      "seconds": 16.340702674351633,
+      "images_per_second": 10.036288112469876,
+      "peak_allocated_gib": 77.709707736969,
+      "peak_reserved_gib": 92.87890625
+    },
+    {
+      "batch": 166,
+      "ok": true,
+      "seconds": 16.550560753792524,
+      "images_per_second": 10.029871644195588,
+      "peak_allocated_gib": 78.60343599319458,
+      "peak_reserved_gib": 93.955078125
+    },
+    {
+      "batch": 167,
+      "ok": true,
+      "seconds": 16.660942124202847,
+      "images_per_second": 10.023442777428784,
+      "peak_allocated_gib": 79.05249738693237,
+      "peak_reserved_gib": 94.49609375
+    }
+  ],
+  "batch1_matches_original": true,
+  "batch4_vs_single_pixel_difference": [
+    {
+      "mask_different_fraction": 1.97427797833935e-05,
+      "weights_different_fraction": 5.781814079422383e-05
+    },
+    {
+      "mask_different_fraction": 0.0,
+      "weights_different_fraction": 0.00012127707581227437
+    },
+    {
+      "mask_different_fraction": 7.050992779783394e-06,
+      "weights_different_fraction": 0.00016922382671480144
+    },
+    {
+      "mask_different_fraction": 0.0,
+      "weights_different_fraction": 3.472222222222222e-05
+    }
+  ],
+  "largest_passed_batch": 167,
+  "first_failing_batch": 168
+}

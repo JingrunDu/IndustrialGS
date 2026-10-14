@@ -1,0 +1,30 @@
+[
+  {
+    "test": "test1",
+    "phase": "modeling",
+    "iteration": 665000,
+    "source": "/data/oss_bucket_0/beifen/data/3dgs_bushu/experiments_20260923/E01_T01_seed0",
+    "directory": "result/test1/modeling"
+  },
+  {
+    "test": "test1",
+    "phase": "dynamic_update",
+    "iteration": 997500,
+    "source": "/data/oss_bucket_0/beifen/data/3dgs_bushu/dynamic_update/20261005_173800/test1",
+    "directory": "result/test1/dynamic_update"
+  },
+  {
+    "test": "test2",
+    "phase": "modeling",
+    "iteration": 665000,
+    "source": "/data/oss_bucket_0/beifen/data/3dgs_bushu/experiments_20260923/E09_T01_seed1",
+    "directory": "result/test2/modeling"
+  },
+  {
+    "test": "test2",
+    "phase": "dynamic_update",
+    "iteration": 997500,
+    "source": "/data/oss_bucket_0/beifen/data/3dgs_bushu/dynamic_update/20261005_173800/test2",
+    "directory": "result/test2/dynamic_update"
+  }
+]

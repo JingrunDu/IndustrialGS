@@ -1,0 +1,11 @@
+NEBULA_PROJECT=${NEBULA_PROJECT:-embodied_ai_simulation_collaboration}
+QUEUE=${QUEUE:-embodied_ai_h20_na130}
+ALGO_NAME=${ALGO_NAME:-pytorch280}
+SHARDS=${SHARDS:-8}
+BATCH_SIZE=${BATCH_SIZE:-32}
+UPLOAD_WORKERS=${UPLOAD_WORKERS:-8}
+UPLOAD_QUEUE=${UPLOAD_QUEUE:-64}
+DATA_PATH=/data/oss_bucket_0/beifen/home/dujingrun.djr/code/3dgs/FastGS/data/perspective
+SAM3_SOURCE=${SAM3_SOURCE:-/data/oss_bucket_0/beifen/home/dujingrun.djr/code/3dgs/sam3/sam3}
+SAM3_CHECKPOINT=/data/oss_bucket_0/beifen/data/model/sam3_weights/facebook/sam3___1/sam3.1_multiplex.pt
+OSS_CREDS_FILE=${OSS_CREDS_FILE:-/data/oss_bucket_0/beifen/home/dujingrun.djr/code/textgs/render/oss_creds.env}

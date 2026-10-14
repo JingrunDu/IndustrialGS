@@ -1,0 +1,77 @@
+{
+  "gpu": "NVIDIA H20",
+  "torch": "2.5.1",
+  "cuda": "12.4",
+  "resolution": 1008,
+  "precision": "bf16",
+  "timing": "preloaded PIL -> batched encoder + 4 batched prompts -> CPU maps; no OSS writes",
+  "results": [
+    {
+      "batch": 1,
+      "ok": true,
+      "seconds": 0.1937804650515318,
+      "images_per_second": 5.160478894165474,
+      "peak_allocated_gib": 4.988980293273926,
+      "peak_reserved_gib": 5.3046875
+    },
+    {
+      "batch": 2,
+      "ok": true,
+      "seconds": 0.43178978003561497,
+      "images_per_second": 4.631883598159817,
+      "peak_allocated_gib": 5.434813976287842,
+      "peak_reserved_gib": 6.025390625
+    },
+    {
+      "batch": 4,
+      "ok": true,
+      "seconds": 0.6264912970364094,
+      "images_per_second": 6.384765469084456,
+      "peak_allocated_gib": 6.323577880859375,
+      "peak_reserved_gib": 7.384765625
+    },
+    {
+      "batch": 8,
+      "ok": true,
+      "seconds": 1.0142945358529687,
+      "images_per_second": 7.887255345679663,
+      "peak_allocated_gib": 8.110122203826904,
+      "peak_reserved_gib": 10.171875
+    },
+    {
+      "batch": 16,
+      "ok": true,
+      "seconds": 1.7980562942102551,
+      "images_per_second": 8.898497812065191,
+      "peak_allocated_gib": 11.676985263824463,
+      "peak_reserved_gib": 15.625
+    },
+    {
+      "batch": 32,
+      "ok": true,
+      "seconds": 3.3716367362067103,
+      "images_per_second": 9.490939417157342,
+      "peak_allocated_gib": 18.81605291366577,
+      "peak_reserved_gib": 26.552734375
+    },
+    {
+      "batch": 64,
+      "ok": true,
+      "seconds": 6.501129202544689,
+      "images_per_second": 9.844443635260925,
+      "peak_allocated_gib": 33.0941276550293,
+      "peak_reserved_gib": 48.404296875
+    },
+    {
+      "batch": 128,
+      "ok": true,
+      "seconds": 12.884357599541545,
+      "images_per_second": 9.93452712027758,
+      "peak_allocated_gib": 61.648263931274414,
+      "peak_reserved_gib": 92.109375
+    }
+  ],
+  "batch1_matches_original": true,
+  "largest_passed_batch": 128,
+  "first_failing_batch": null
+}

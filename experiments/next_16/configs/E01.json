@@ -1,0 +1,61 @@
+{
+  "id": "E01",
+  "trajectory": "T01",
+  "seed": 0,
+  "purpose": "6650 images: 100/150/200/300 passes",
+  "num_images": 6650,
+  "expected_sampling_passes": 300.0,
+  "manifest": "manifests/images_6650.txt",
+  "manifest_sha256": "8470d2eaf5c2057f3c160e4c4a1858dfc9825700032e319b5c262e8106265aa1",
+  "parameters": {
+    "initialization": "fresh",
+    "init_ply": "sparse/0/points3D.ply",
+    "init_ply_sha256": "6a6724925440d344b8b6b331ceff1dd7db03b5e81020d0beb59bc2e8ee924e18",
+    "camera_extent_policy": "fixed_baseline_extent_for_all_datasets",
+    "camera_extent_override": 43.458562290751125,
+    "eval": false,
+    "test_iterations": [
+      -1
+    ],
+    "resolution": 1,
+    "data_device": "cpu",
+    "position_lr_max_steps": 665000,
+    "densification_interval": 2216,
+    "densify_from_iter": 6650,
+    "densify_until_iter": 332500,
+    "opacity_reset_interval": 99750,
+    "densify_grad_threshold": 0.0002,
+    "grad_thresh": 0.0002,
+    "grad_abs_thresh": 0.0003,
+    "percent_dense": 0.003,
+    "dense": 0.003,
+    "optimizer_type": "default",
+    "opacity_lr": 0.025,
+    "highfeature_lr": 0.025,
+    "lambda_dssim": 0.4,
+    "mult": 0.6,
+    "loss_thresh": 0.05,
+    "freq_weight_alpha": 0.5,
+    "use_ms_ssim": true,
+    "use_semantic_weight": true,
+    "semantic_equipment_weight": 3.0,
+    "semantic_background_weight": 0.5,
+    "densify_equipment_factor": 1.0,
+    "progressive_prune_interval": 0,
+    "mask_sigma": 0,
+    "wandb_logged_metrics": [
+      "train/loss"
+    ],
+    "loss_log_interval": 100,
+    "iterations": 1995000,
+    "save_iterations": [
+      665000,
+      997500,
+      1330000,
+      1995000
+    ]
+  },
+  "overrides_from_common": {},
+  "baseline_throughput_only_hours": 4.568562791975818,
+  "output_relative": "beifen/data/3dgs_bushu/experiments_20260923/E01_T01_seed0"
+}
