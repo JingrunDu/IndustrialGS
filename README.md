@@ -39,9 +39,114 @@ perspective/
 换用新数据时须重新生成清单，并更新实验配置中的路径、图像数量、初始点云SHA-256和相机尺度；旧参数不能直接代表任意新场景。
 
 
-## Part 1：星云队列启动
+## Part 1：本地启动
+
+本地运行无需星云账号或OSS挂载。示例目录均相对于仓库根目录，可按实际位置调整。
+
+数据、环境和完整结果统一从 [ModelScope](https://modelscope.cn/datasets/JingrunDu/converter_value) 获取。
+独立复现两次测试只需下载 `data/subset_6650/`；全部数据位于 `data/full/`。
+分卷下载与恢复见 [ModelScope交付说明](docs/ModelScope交付说明.md)。
+每个环境独立存放；当前训练环境为 `environment/industrialgs_py310_cu121_v1/`，包含核心分卷、离线依赖和恢复说明。
 
 ### 1.1 运行准备
+
+需要Linux、NVIDIA GPU及兼容的驱动。在仓库根目录执行下载和恢复；准备阶段与训练计时分开：
+
+```bash
+python3 -m pip install modelscope-hub==0.4.6
+python3 tools/prepare_materials.py --dataset subset_6650 \
+  --environment industrialgs_py310_cu121_v1 \
+  --token-file "$HOME/.modelscope/read_token"
+export GS_PYTHON="$PWD/envs/industrialgs/bin/python"
+export DATA="$PWD/data/perspective"
+export RUNS="$PWD/outputs/industrialgs"
+export WANDB_MODE=online
+"$GS_PYTHON" -m wandb login
+```
+
+一键准备会校验下载、解压数据、合并环境分卷、恢复环境并离线安装运行依赖。私有仓库需要令牌；公开访问时可省略 `--token-file`。可先追加 `--dry-run` 查看命令。目标数据目录必须为空，已经恢复的数据和环境可直接用于以下训练命令，无需再次准备。
+
+全量材料使用 `--dataset full`，建议另设 `--data data/perspective_full`。当前 E01/E09 仍按清单选择 6,650 张图片；下载全量数据不会自动改变训练样本数量。
+
+示例使用相对目录；`$PWD` 确保训练子进程切换目录后仍能找到环境及数据。
+离线运行可设置 `WANDB_MODE=offline`，不记录W&B可设置 `disabled`。
+也可在安装CUDA工具链和C++编译器后使用 `conda env create -n industrialgs -f environment.yml` 从源码构建，
+另安装 `wandb==0.25.0`；此方式与已验证环境包版本不同，需要自行验证CUDA扩展兼容性。
+
+
+### 1.2 准备数据
+
+
+
+将下载的数据分卷按交付说明解压到 `$DATA`。两份交付数据均已包含完整标注，可直接训练。
+自行更换数据而缺少标注时，执行下面的SAM3生成命令。
+SAM3使用独立的Python环境，需要安装SAM3源码及依赖，准备模型权重；`PYTHONPATH` 指向包含 `sam3/` 包的源码根目录：
+
+```bash
+PYTHONPATH="$PWD/external/sam3" envs/sam3/bin/python \
+  deployment/sam3_full/generate.py \
+  --data "$DATA" --checkpoint models/sam3.1_multiplex.pt \
+  --status-dir outputs/sam3_status \
+  --shard 0 --shards 1 --batch-size 32 --output-backend filesystem
+```
+
+标注直接写入 `$DATA/mask_sam3/` 和 `$DATA/semantic_weights/`，已有结果跳过。
+该入口读取 `sparse/0_full/` 的相机记录；batch size可按显存降低。
+
+
+### 1.3 建模训练
+
+```bash
+"$GS_PYTHON" tools/local_run.py train \
+  --data "$DATA" --output "$RUNS/test1" \
+  --config experiments/next_16/configs/E01.json --stop-after 665000 --dry-run
+
+"$GS_PYTHON" tools/local_run.py train \
+  --data "$DATA" --output "$RUNS/test1" \
+  --config experiments/next_16/configs/E01.json --stop-after 665000
+```
+
+首次命令只检查输入并打印计划，第二条实际训练。第二次测试使用 `E09.json` 和新的 `test2` 输出目录。
+本机入口沿用相同训练参数、数据校验和日志格式，输出保存在本机指定目录，目录必须为空。
+当前配置及清单对应现有数据；新场景须更新配置、清单和校验值。
+
+
+### 1.4 动态更新
+
+```bash
+"$GS_PYTHON" tools/local_run.py update \
+  --data "$DATA" --output "$RUNS/update_test1" \
+  --config experiments/next_16/configs/E01.json \
+  --resume "$RUNS/test1/checkpoints/checkpoint_665000.pth" \
+  --additional-steps 332500 --dry-run
+```
+
+检查计划后去掉 `--dry-run` 执行。第二次使用 `E09.json`、`test2` 断点及新的 `update_test2` 目录。
+断点旁必须保留 `.pth.sha256` 文件，配置、图像清单及随机种子必须与原训练一致。
+本次显示步数从1开始，模型文件使用累计步数；本机更新不会自动渲染，完成后执行下一节命令。
+
+
+### 1.5 渲染与查看结果
+
+```bash
+"$GS_PYTHON" deployment/huanliufa_nebula/render_comparison.py \
+  --data "$DATA" --model "$RUNS/update_test1" \
+  --output "$RUNS/render_update_test1" --per-camera 6
+```
+
+默认相机模型为 `sparse/0/`，使用全量相机时追加 `--sparse-subdir sparse/0_full`。
+打开输出目录中的 `index.html` 查看结果。本机渲染也需要GPU和训练CUDA扩展。
+
+渲染视角参与了训练，PSNR排除人物区域，用于观察拟合效果，不是独立测试集指标。
+
+
+默认加载模型目录中最新步数的PLY，每个相机目录采样6个视角，输出 `gt/`、`render/`、`comparison/`、`metrics.csv` 和 `index.html`。
+指定视角可追加 `--image-list 清单.txt`，每行填写相对于 `images/` 的图像路径。
+渲染建模结果时将 `--model` 改为 `"$RUNS/test1"`，并指定新的渲染输出目录。
+
+## Part 2：星云队列启动
+
+### 2.1 运行准备
 
 提交端需要安装并配置 `nebulactl`，能够访问项目、队列和OSS。
 在 [config.sh](deployment/huanliufa_nebula/config.sh) 中设置：
@@ -64,7 +169,7 @@ W&B默认项目为 `jingrundu-tsinghua-university/huanliufa_bushu`。
 每100步记录一次loss，任务日志打印Run链接；在线失败时尝试离线记录，CSV日志仍保留。
 
 
-### 1.2 准备数据
+### 2.2 准备数据
 
 当前数据源保留历史OSS地址：
 
@@ -92,7 +197,7 @@ bash deployment/sam3_full/submit.sh
 参数见 [SAM3配置](deployment/sam3_full/config.sh)，流程见 [SAM3说明](deployment/sam3_full/README.md)。
 
 
-### 1.3 建模训练
+### 2.3 建模训练
 
 使用携带当前本地源码的实验入口。以6,650张图像、665,000步为例，每次指定新输出目录：
 
@@ -129,7 +234,7 @@ bash deployment/huanliufa_nebula/submit.sh
 正常阶段停止时状态可以是 `paused_stage`，需结合实际步数和退出码判断结果。
 
 
-### 1.4 动态更新
+### 2.4 动态更新
 
 当前入口分别加载前两次建模的665,000步完整断点，使用原6,650张图像执行332,500步动态更新，累计达到997,500步。
 
@@ -165,7 +270,7 @@ oss://fmc/beifen/data/3dgs_bushu/dynamic_update/<运行时间>/test2/
 详细流程见 [动态更新运行说明](third_party_test/动态更新运行说明.md)。
 
 
-### 1.5 渲染与查看结果
+### 2.5 渲染与查看结果
 
 下载任务输出的 `visualization/` 目录，用浏览器打开其中的 `index.html`。
 重新渲染时，在有GPU及已恢复训练环境的队列节点设置变量：
@@ -184,111 +289,6 @@ oss://fmc/beifen/data/3dgs_bushu/dynamic_update/<运行时间>/test2/
 ```
 
 该命令在GPU节点执行，不是队列提交命令。
-
-## Part 2：本地启动
-
-本地运行无需星云账号或OSS挂载。示例目录均相对于仓库根目录，可按实际位置调整。
-
-数据、环境和完整结果统一从 [ModelScope](https://modelscope.cn/datasets/JingrunDu/converter_value) 获取。
-独立复现两次测试只需下载 `data/subset_6650/`；全部数据位于 `data/full/`。
-分卷下载与恢复见 [ModelScope交付说明](docs/ModelScope交付说明.md)。
-每个环境独立存放；当前训练环境为 `environment/industrialgs_py310_cu121_v1/`，包含核心分卷、离线依赖和恢复说明。
-
-### 2.1 运行准备
-
-需要Linux、NVIDIA GPU及兼容的驱动。在仓库根目录执行下载和恢复；准备阶段与训练计时分开：
-
-```bash
-python3 -m pip install modelscope-hub==0.4.6
-python3 tools/prepare_materials.py --dataset subset_6650 \
-  --environment industrialgs_py310_cu121_v1 \
-  --token-file "$HOME/.modelscope/read_token"
-export GS_PYTHON="$PWD/envs/industrialgs/bin/python"
-export DATA="$PWD/data/perspective"
-export RUNS="$PWD/outputs/industrialgs"
-export WANDB_MODE=online
-"$GS_PYTHON" -m wandb login
-```
-
-一键准备会校验下载、解压数据、合并环境分卷、恢复环境并离线安装运行依赖。私有仓库需要令牌；公开访问时可省略 `--token-file`。可先追加 `--dry-run` 查看命令。目标数据目录必须为空，已经恢复的数据和环境可直接用于以下训练命令，无需再次准备。
-
-全量材料使用 `--dataset full`，建议另设 `--data data/perspective_full`。当前 E01/E09 仍按清单选择 6,650 张图片；下载全量数据不会自动改变训练样本数量。
-
-示例使用相对目录；`$PWD` 确保训练子进程切换目录后仍能找到环境及数据。
-离线运行可设置 `WANDB_MODE=offline`，不记录W&B可设置 `disabled`。
-也可在安装CUDA工具链和C++编译器后使用 `conda env create -n industrialgs -f environment.yml` 从源码构建，
-另安装 `wandb==0.25.0`；此方式与已验证环境包版本不同，需要自行验证CUDA扩展兼容性。
-
-
-### 2.2 准备数据
-
-
-
-将下载的数据分卷按交付说明解压到 `$DATA`。两份交付数据均已包含完整标注，可直接训练。
-自行更换数据而缺少标注时，执行下面的SAM3生成命令。
-SAM3使用独立的Python环境，需要安装SAM3源码及依赖，准备模型权重；`PYTHONPATH` 指向包含 `sam3/` 包的源码根目录：
-
-```bash
-PYTHONPATH="$PWD/external/sam3" envs/sam3/bin/python \
-  deployment/sam3_full/generate.py \
-  --data "$DATA" --checkpoint models/sam3.1_multiplex.pt \
-  --status-dir outputs/sam3_status \
-  --shard 0 --shards 1 --batch-size 32 --output-backend filesystem
-```
-
-标注直接写入 `$DATA/mask_sam3/` 和 `$DATA/semantic_weights/`，已有结果跳过。
-该入口读取 `sparse/0_full/` 的相机记录；batch size可按显存降低。
-
-
-### 2.3 建模训练
-
-```bash
-"$GS_PYTHON" tools/local_run.py train \
-  --data "$DATA" --output "$RUNS/test1" \
-  --config experiments/next_16/configs/E01.json --stop-after 665000 --dry-run
-
-"$GS_PYTHON" tools/local_run.py train \
-  --data "$DATA" --output "$RUNS/test1" \
-  --config experiments/next_16/configs/E01.json --stop-after 665000
-```
-
-首次命令只检查输入并打印计划，第二条实际训练。第二次测试使用 `E09.json` 和新的 `test2` 输出目录。
-本机入口沿用相同训练参数、数据校验和日志格式，输出保存在本机指定目录，目录必须为空。
-当前配置及清单对应现有数据；新场景须更新配置、清单和校验值。
-
-
-### 2.4 动态更新
-
-```bash
-"$GS_PYTHON" tools/local_run.py update \
-  --data "$DATA" --output "$RUNS/update_test1" \
-  --config experiments/next_16/configs/E01.json \
-  --resume "$RUNS/test1/checkpoints/checkpoint_665000.pth" \
-  --additional-steps 332500 --dry-run
-```
-
-检查计划后去掉 `--dry-run` 执行。第二次使用 `E09.json`、`test2` 断点及新的 `update_test2` 目录。
-断点旁必须保留 `.pth.sha256` 文件，配置、图像清单及随机种子必须与原训练一致。
-本次显示步数从1开始，模型文件使用累计步数；本机更新不会自动渲染，完成后执行下一节命令。
-
-
-### 2.5 渲染与查看结果
-
-```bash
-"$GS_PYTHON" deployment/huanliufa_nebula/render_comparison.py \
-  --data "$DATA" --model "$RUNS/update_test1" \
-  --output "$RUNS/render_update_test1" --per-camera 6
-```
-
-默认相机模型为 `sparse/0/`，使用全量相机时追加 `--sparse-subdir sparse/0_full`。
-打开输出目录中的 `index.html` 查看结果。本机渲染也需要GPU和训练CUDA扩展。
-
-渲染视角参与了训练，PSNR排除人物区域，用于观察拟合效果，不是独立测试集指标。
-
-
-默认加载模型目录中最新步数的PLY，每个相机目录采样6个视角，输出 `gt/`、`render/`、`comparison/`、`metrics.csv` 和 `index.html`。
-指定视角可追加 `--image-list 清单.txt`，每行填写相对于 `images/` 的图像路径。
-渲染建模结果时将 `--model` 改为 `"$RUNS/test1"`，并指定新的渲染输出目录。
 
 ## 已有渲染成果
 
