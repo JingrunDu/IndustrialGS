@@ -214,18 +214,6 @@ def build_environment():
     write_json(Path(str(target) + '.json'), manifest)
 
 
-def build_results():
-    for source in sorted((ROOT / 'result').rglob('*')):
-        if not source.is_file():
-            continue
-        target = STAGE / source.relative_to(ROOT)
-        if source.stat().st_size > LIMIT:
-            split_file(source, target)
-        else:
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(source, target)
-
-
 def api_client():
     from modelscope_hub import HubApi
     return HubApi(token=Path.home().joinpath('.modelscope/read_token').read_text().strip())
@@ -260,7 +248,7 @@ def upload(section):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('action', choices=['build', 'upload'])
-    parser.add_argument('section', choices=['data/subset_6650', 'data/full', 'environment', 'result'])
+    parser.add_argument('section', choices=['data/subset_6650', 'data/full', 'environment'])
     args = parser.parse_args()
     if args.action == 'upload':
         upload(args.section)
@@ -268,8 +256,6 @@ def main():
         build_data(args.section.split('/')[1])
     elif args.section == 'environment':
         build_environment()
-    else:
-        build_results()
 
 
 if __name__ == '__main__':

@@ -5,7 +5,7 @@ from pathlib import Path
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('section', choices=['data/subset_6650', 'data/full', 'environment', 'result'])
+    parser.add_argument('section', choices=['data/subset_6650', 'data/full', 'environment'])
     parser.add_argument('--destination', type=Path, default=Path('downloads'))
     parser.add_argument('--token-file', type=Path)
     parser.add_argument('--environment', default='industrialgs_py310_cu121_v1',

@@ -1,6 +1,6 @@
 # IndustrialGS
 
-工业实景三维高斯建模、动态更新与渲染。代码位于本仓库，数据、Python 环境和完整模型统一存放在 [ModelScope](https://modelscope.cn/datasets/JingrunDu/converter_value)。
+工业实景三维高斯建模、动态更新与渲染。代码与项目成果位于本仓库，可复用的数据和 Python 环境存放在 [ModelScope](https://modelscope.cn/datasets/JingrunDu/converter_value)。
 
 ## Part 1：本地部署
 
@@ -24,7 +24,6 @@ ModelScope 提供以下材料：
 | data/subset_6650/ | 6,650 张图片及对应掩码、语义标注、相机和初始点云 |
 | data/full/ | 全量 90,360 张图片及配套数据 |
 | environment/industrialgs_py310_cu121_v1/ | Python 3.10、PyTorch 2.3.0 + CUDA 12.1 环境及离线依赖 |
-| result/ | 两次建模、动态更新的模型、断点、日志及渲染成果 |
 
 先创建下载工具环境，再一键下载并恢复训练材料：
 
@@ -139,4 +138,4 @@ bash deployment/huanliufa_nebula/submit.sh
 - [建模对比图](result/renderings/modeling.jpg)：实拍图与两次建模结果。
 - [动态更新对比图](result/renderings/dynamic_update.jpg)：六对精选实拍图与更新结果。
 
-查看仓库中的图片需安装 Git LFS，并执行 `git lfs pull`。完整模型和断点从 ModelScope 下载，恢复方法见 [材料说明](docs/ModelScope交付说明.md)。
+查看仓库中的图片需安装 Git LFS，并执行 `git lfs pull`。成果范围与完整模型来源见 [成果说明](result/README.md)。ModelScope 仅提供可复用的数据与环境。
