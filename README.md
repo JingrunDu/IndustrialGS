@@ -138,6 +138,5 @@ bash deployment/huanliufa_nebula/submit.sh
 
 - [建模对比图](result/renderings/modeling.jpg)：实拍图与两次建模结果。
 - [动态更新对比图](result/renderings/dynamic_update.jpg)：六对精选实拍图与更新结果。
-- [测试过程文档](result/report/测试过程.doc)：第三方测试材料，与成果统一保存在 `result/`。
 
-查看仓库中的图片和 Word 材料需安装 Git LFS，并执行 `git lfs pull`。完整模型和断点从 ModelScope 下载，恢复方法见 [材料说明](docs/ModelScope交付说明.md)。
+查看仓库中的图片需安装 Git LFS，并执行 `git lfs pull`。完整模型和断点从 ModelScope 下载，恢复方法见 [材料说明](docs/ModelScope交付说明.md)。

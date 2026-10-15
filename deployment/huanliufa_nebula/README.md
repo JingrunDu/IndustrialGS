@@ -13,10 +13,9 @@
 | lazy_cameras.py、camera_loading.py | 有界图像缓存和人物掩码处理 |
 | run_training.py、loss_tracking.py、wandb_tracking.py | 进度、loss及W&B记录 |
 | render_comparison.py | GT与指定模型渲染对比 |
-| render_perturbed.py、render_perturbed_montage.py | 扰动视角渲染，无对应GT |
+| process_utils.py | 环境准备阶段的子进程与进度输出 |
 
-未设置 `EXPERIMENT_ID` 时会选择历史 `train_node.py` / `train_6650.sh` 入口，读取OSS旧源码。
-当前实验和动态更新入口携带本地最新代码。
+默认选择 `E01`；第二次测试指定 `EXPERIMENT_ID=E09`。提交包携带当前仓库源码，不读取 OSS 上的旧源码。
 
 ## W&B
 

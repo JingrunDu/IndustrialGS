@@ -7,7 +7,7 @@ from pathlib import Path
 import subprocess
 import sys
 from environment_archive import DEFAULT_ARCHIVE, restore_environment
-from train_node import run_stage
+from process_utils import run_stage
 
 
 def command_for(config, plan_root, source, output, code, stop_after, resume=None):

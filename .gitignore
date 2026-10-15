@@ -33,6 +33,11 @@ Thumbs.db
 .nebulactl/
 wandb/
 .env*
+*.token
+*.pem
+*.key
+read_token
+credentials
 *.tar
 *.tar.gz
 *.zip

@@ -4,6 +4,7 @@ set +x  # 不输出包含密钥的 shell trace
 cd "$(dirname "$0")"
 
 source ./config.sh
+export EXPERIMENT_ID=${EXPERIMENT_ID:-E01}
 export WANDB_ENTITY WANDB_PROJECT WANDB_MODE WANDB_BASE_URL
 case "$WANDB_MODE" in online|offline|disabled) ;; *) echo '无效的 WANDB_MODE' >&2; exit 1 ;; esac
 OSS_MOUNT=/data/oss_bucket_0
@@ -36,8 +37,8 @@ for name in DATA_PATH GS_PYTHON; do
     ENVS+=",$name=$value"
   fi
 done
-ENTRY=train_node.py
-USER_PARAMS="--run-name=$JOB_NAME"
+ENTRY=experiment_node.py
+USER_PARAMS=""
 if [[ -n ${EXPERIMENT_ID:-} ]]; then
   [[ $EXPERIMENT_ID == E01 || $EXPERIMENT_ID == E09 ]] || { echo '仅保留 E01 和 E09'; exit 1; }
   ENTRY=experiment_node.py
