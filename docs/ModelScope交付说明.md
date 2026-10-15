@@ -53,3 +53,20 @@ python tools/restore_delivery.py merge --source downloads/result
 
 环境不包含主机NVIDIA驱动；目标机器需要兼容的Linux及GPU驱动。
 环境包名称统一使用 IndustrialGS。校验清单中不保存访问令牌。
+
+## 自备数据
+
+交付数据已满足以下结构，无需重复生成标注：
+
+```text
+perspective/
+  images/                 # 透视图片，保留相机子目录
+  mask_sam3/              # 同路径、同名 PNG 人物掩码
+  semantic_weights/       # 同路径、同名 PNG 语义标注
+  sparse/0/               # cameras.bin、images.bin、points3D.ply
+  sparse/0_full/          # 相应图像范围的相机模型
+```
+
+更换场景时，先准备透视图、COLMAP 二进制相机模型及初始点云，再生成与图片尺寸一致的标注。人物掩码中 255 表示排除人物、0 表示保留；语义图中 0 表示人物、100 表示地面/墙面/天花板、200 表示其余区域。
+
+相机记录中的图片名须与 `images/` 下的相对路径一致。训练前更新实验配置的图像清单、数量、初始点云 SHA-256 和相机尺度，不能直接套用当前场景的校验值。SAM3 标注入口见 [SAM3说明](../deployment/sam3_full/README.md)。
