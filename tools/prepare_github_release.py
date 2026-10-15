@@ -16,6 +16,7 @@ TOKEN_PATTERN = re.compile(rb'(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--build', action='store_true')
+    parser.add_argument('--sync', type=Path, help='Update an existing publication checkout')
     args = parser.parse_args()
     subprocess.run(['git', 'diff', '--check', '--', 'README.md', 'tools', 'docs',
                     'deployment/huanliufa_nebula/submit.sh'], cwd=ROOT, check=True)
@@ -39,19 +40,36 @@ def main():
         sizes[path.relative_to(ROOT).parts[0]] += path.stat().st_size
     report = dict(files=len(selected), bytes=sum(sizes.values()), bytes_by_directory=dict(sizes))
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    if not args.build:
+    if not args.build and args.sync is None:
         return
-    stage = ROOT / 'backups' / ('github_IndustrialGS_' + time.strftime('%Y%m%d_%H%M%S'))
-    stage.mkdir(parents=True)
+    stage = args.sync.resolve() if args.sync else ROOT / 'backups' / ('github_IndustrialGS_' + time.strftime('%Y%m%d_%H%M%S'))
+    if args.sync:
+        if ROOT / 'backups' not in stage.parents or not (stage / '.git').is_dir():
+            raise ValueError('Expected a publication checkout under backups/')
+        remote = subprocess.check_output(['git', 'remote', 'get-url', 'origin'], cwd=stage, text=True).strip()
+        if remote != 'https://github.com/JingrunDu/IndustrialGS.git':
+            raise ValueError('Unexpected publication remote')
+        retained = {p.relative_to(ROOT).as_posix() for p in selected}
+        previous = subprocess.check_output(['git', 'ls-files', '-z'], cwd=stage).decode().split('\0')
+        removed = ROOT / 'backups' / ('github_removed_' + time.strftime('%Y%m%d_%H%M%S'))
+        for name in filter(None, previous):
+            path = stage / name
+            if name not in retained and path.is_file():
+                target = removed / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.move(str(path), str(target))
+    else:
+        stage.mkdir(parents=True)
     for path in selected:
         target = stage / path.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
         target.chmod(path.stat().st_mode & 0o777)
-    subprocess.run(['git', 'init'], cwd=stage, check=True)
-    subprocess.run(['git', 'symbolic-ref', 'HEAD', 'refs/heads/main'], cwd=stage, check=True)
-    subprocess.run(['git', 'remote', 'add', 'origin', 'https://github.com/JingrunDu/IndustrialGS.git'], cwd=stage, check=True)
-    subprocess.run(['git', 'lfs', 'install', '--local'], cwd=stage, check=True)
+    if not args.sync:
+        subprocess.run(['git', 'init'], cwd=stage, check=True)
+        subprocess.run(['git', 'symbolic-ref', 'HEAD', 'refs/heads/main'], cwd=stage, check=True)
+        subprocess.run(['git', 'remote', 'add', 'origin', 'https://github.com/JingrunDu/IndustrialGS.git'], cwd=stage, check=True)
+        subprocess.run(['git', 'lfs', 'install', '--local'], cwd=stage, check=True)
     subprocess.run(['git', 'add', '--all'], cwd=stage, check=True)
     report['stage'] = str(stage)
     report['tree'] = subprocess.check_output(['git', 'write-tree'], cwd=stage, text=True).strip()

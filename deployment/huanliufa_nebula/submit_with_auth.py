@@ -28,8 +28,8 @@ def submit(command):
             shutil.copy2(repo / 'train.py', code / 'train.py')
             for name in ['arguments', 'scene', 'utils', 'gaussian_renderer', 'lpipsPyTorch']:
                 shutil.copytree(repo / name, code / name, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
-            shutil.copytree(repo / 'experiments/next_16/configs', code / 'experiments/next_16/configs')
-            shutil.copytree(repo / 'experiments/next_16/manifests', code / 'experiments/next_16/manifests')
+            shutil.copytree(repo / 'experiments/configs', code / 'experiments/configs')
+            shutil.copytree(repo / 'experiments/manifests', code / 'experiments/manifests')
         if key:
             path = stage / '.wandb_auth.json'
             fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)

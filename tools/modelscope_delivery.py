@@ -114,7 +114,7 @@ def create_shard(dataset, number, names):
 
 
 def build_data(dataset):
-    names = (ROOT / 'experiments/next_16/manifests/images_6650.txt').read_text().splitlines()
+    names = (ROOT / 'experiments/manifests/images_6650.txt').read_text().splitlines()
     expected = 6650
     if dataset == 'full':
         names = camera_names(DATA / 'sparse/0_full/images.bin')

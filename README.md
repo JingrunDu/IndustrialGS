@@ -59,7 +59,7 @@ export WANDB_MODE=offline
 
 "$GS_PYTHON" tools/local_run.py train \
   --data "$DATA" --output "$RUNS/test1" \
-  --config experiments/next_16/configs/E01.json --stop-after 665000
+  --config experiments/configs/E01.json --stop-after 665000
 ```
 
 使用全部 6,650 张选定图片训练 665,000 步，不划分测试集。第二次测试改用 `E09.json` 和新的 `test2` 输出目录。追加 `--dry-run` 可先检查输入及命令，输出目录须为空。
@@ -73,7 +73,7 @@ export WANDB_MODE=offline
 ```bash
 "$GS_PYTHON" tools/local_run.py update \
   --data "$DATA" --output "$RUNS/update_test1" \
-  --config experiments/next_16/configs/E01.json \
+  --config experiments/configs/E01.json \
   --resume "$RUNS/test1/checkpoints/checkpoint_665000.pth" \
   --additional-steps 332500
 ```
@@ -138,5 +138,6 @@ bash deployment/huanliufa_nebula/submit.sh
 
 - [建模对比图](result/renderings/modeling.jpg)：实拍图与两次建模结果。
 - [动态更新对比图](result/renderings/dynamic_update.jpg)：六对精选实拍图与更新结果。
+- [测试过程文档](result/report/测试过程.doc)：第三方测试材料，与成果统一保存在 `result/`。
 
 查看仓库中的图片和 Word 材料需安装 Git LFS，并执行 `git lfs pull`。完整模型和断点从 ModelScope 下载，恢复方法见 [材料说明](docs/ModelScope交付说明.md)。

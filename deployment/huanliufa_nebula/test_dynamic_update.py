@@ -7,10 +7,9 @@ import unittest
 from types import SimpleNamespace
 from unittest.mock import patch
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'deployment/huanliufa_nebula'))
 from dynamic_update_node import summarize
-from submit_dynamic_update import build_plan
 from submit_with_auth import submit
 from loss_tracking import track_loss_csv
 import csv
@@ -39,32 +38,11 @@ class DynamicUpdateTests(unittest.TestCase):
             self.assertTrue((package / 'dynamic_update_visualize.py').exists())
             self.assertTrue((package / 'render_comparison.py').exists())
             self.assertTrue((package / 'training_code/train.py').exists())
-            self.assertTrue((package / 'training_code/experiments/next_16/manifests/images_6650.txt').exists())
-            self.assertFalse((package / 'training_code/third_party_test').exists())
+            self.assertTrue((package / 'training_code/experiments/manifests/images_6650.txt').exists())
+            self.assertFalse((package / 'training_code/result').exists())
             return SimpleNamespace(returncode=0)
         with patch.dict('os.environ', {'EXPERIMENT_ID': 'E01', 'WANDB_MODE': 'disabled'}), patch('submit_with_auth.subprocess.run', inspect):
             self.assertEqual(submit(['nebulactl', 'run', 'mdl', '--entry=dynamic_update_node.py', '--file.cluster_file=cluster.json']), 0)
-
-    def test_exact_checkpoint_and_isolated_outputs(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            mount = Path(tmp)
-            for name in ['E01_T01_seed0', 'E09_T01_seed1']:
-                folder = mount / 'beifen/data/3dgs_bushu/experiments_20260923' / name / 'checkpoints'
-                folder.mkdir(parents=True)
-                (folder / 'checkpoint_665000.pth').touch()
-                (folder / 'checkpoint_665000.pth.sha256').touch()
-                (folder / 'checkpoint_997500.pth').touch()
-            tests = build_plan(mount, 'test_run')
-            self.assertEqual(len(tests), 2)
-            self.assertEqual(tests[0]['additional_iterations'], 332500)
-            self.assertEqual(tests[1]['stop_iteration'], 997500)
-            self.assertTrue(tests[0]['checkpoint'].endswith('checkpoint_665000.pth'))
-            self.assertNotEqual(tests[0]['output'], tests[0]['source'])
-            output = Path(tests[0]['output'])
-            output.mkdir(parents=True)
-            (output / 'existing.txt').touch()
-            with self.assertRaises(FileExistsError):
-                build_plan(mount, 'test_run')
 
     def test_stage_time_and_incomplete_run_cannot_pass(self):
         with tempfile.TemporaryDirectory() as tmp:

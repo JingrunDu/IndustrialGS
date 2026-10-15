@@ -58,7 +58,7 @@ def main():
         raise ValueError('One experiment requires one worker and one GPU')
     here = Path(__file__).resolve().parent
     code = here / 'training_code' if (here / 'training_code').exists() else here.parents[1]
-    plan = code / 'experiments/next_16'
+    plan = code / 'experiments'
     config = plan / 'configs' / (args.experiment + '.json')
     spec = json.loads(config.read_text())
     mount = Path(os.environ.get('OSS_MOUNT', '/data/oss_bucket_0'))

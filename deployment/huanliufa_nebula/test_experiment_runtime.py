@@ -91,12 +91,13 @@ class RuntimeTests(unittest.TestCase):
             self.assertTrue((package / 'experiment_node.py').exists())
             self.assertTrue((package / 'training_code/utils/training_checkpoint.py').exists())
             self.assertIn('--stop_after', (package / 'training_code/train.py').read_text())
-            self.assertTrue((package / 'training_code/experiments/next_16/configs/E09.json').exists())
+            self.assertTrue((package / 'training_code/experiments/configs/E09.json').exists())
+            self.assertEqual({p.name for p in (package / 'training_code/experiments/configs').glob('*.json')}, {'E01.json', 'E09.json'})
             self.assertFalse((package / 'training_code/result').exists())
             self.assertFalse((package / '.wandb_auth.json').exists())
             self.assertNotIn('WANDB_API_KEY', env)
             return SimpleNamespace(returncode=0)
-        with patch.dict(os.environ, {'EXPERIMENT_ID': 'E05', 'WANDB_MODE': 'disabled'}), patch('submit_with_auth.subprocess.run', inspect):
+        with patch.dict(os.environ, {'EXPERIMENT_ID': 'E01', 'WANDB_MODE': 'disabled'}), patch('submit_with_auth.subprocess.run', inspect):
             self.assertEqual(submit(['nebulactl', 'run', 'mdl', '--file.cluster_file=cluster.json']), 0)
 
 

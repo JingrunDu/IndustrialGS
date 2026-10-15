@@ -25,7 +25,7 @@ def build_command(config, data, output, mode, stop_after, resume, additional_ste
         raise ValueError('This launcher uses all selected images, with eval disabled')
     # Rebase the data location while retaining the reviewed checksum and parameters.
     spec['parameters']['init_ply'] = str(data / 'sparse/0/points3D.ply')
-    spec['manifest'] = str((ROOT / 'experiments/next_16' / spec['manifest']).resolve())
+    spec['manifest'] = str((ROOT / 'experiments' / spec['manifest']).resolve())
     start = 0
     if mode == 'update':
         resume = Path(resume).resolve()
@@ -44,7 +44,7 @@ def build_command(config, data, output, mode, stop_after, resume, additional_ste
     with tempfile.TemporaryDirectory(prefix='industrialgs_local_config_') as tmp:
         rebased = Path(tmp) / 'config.json'
         rebased.write_text(json.dumps(spec))
-        spec, command = command_for(rebased, ROOT / 'experiments/next_16', data, output,
+        spec, command = command_for(rebased, ROOT / 'experiments', data, output,
                                     ROOT, stop_after, str(resume) if mode == 'update' else None)
     return spec, command, start, stop_after
 
@@ -54,7 +54,7 @@ def main():
     parser.add_argument('mode', choices=['train', 'update'])
     parser.add_argument('--data', required=True)
     parser.add_argument('--output', required=True)
-    parser.add_argument('--config', default=str(ROOT / 'experiments/next_16/configs/E01.json'))
+    parser.add_argument('--config', default=str(ROOT / 'experiments/configs/E01.json'))
     parser.add_argument('--python', default=sys.executable)
     parser.add_argument('--stop-after', type=int, default=665000)
     parser.add_argument('--resume')
