@@ -1,0 +1,18 @@
+[
+  {
+    "name": "3dgs_100",
+    "output": "beifen/data/3dgs_bushu/6650_20261029_165533/3dgs_100"
+  },
+  {
+    "name": "3dgs_200",
+    "output": "beifen/data/3dgs_bushu/6650_20261029_165533/3dgs_200"
+  },
+  {
+    "name": "huanliufa_100",
+    "output": "beifen/data/3dgs_bushu/6650_20261029_165533/huanliufa_100"
+  },
+  {
+    "name": "huanliufa_200",
+    "output": "beifen/data/3dgs_bushu/6650_20261029_165533/huanliufa_200"
+  }
+]

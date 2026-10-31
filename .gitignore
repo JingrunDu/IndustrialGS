@@ -26,26 +26,3 @@ oss_config.json
 # ===== 系统文件 =====
 .DS_Store
 Thumbs.db
-
-# Deployment credentials and local environments
-.netrc
-.wandb_auth.json
-.nebulactl/
-wandb/
-.env*
-*.token
-*.pem
-*.key
-read_token
-credentials
-*.tar
-*.tar.gz
-*.zip
-backups/
-packages/
-envs/
-outputs/
-downloads/
-downloads_versioned/
-result/test1/
-result/test2/

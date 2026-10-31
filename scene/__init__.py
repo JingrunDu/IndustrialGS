@@ -12,9 +12,6 @@
 import os
 import random
 import json
-import tempfile
-from pathlib import Path
-from utils.artifact_io import publish_file
 from utils.system_utils import searchForMaxIteration
 from scene.dataset_readers import sceneLoadTypeCallbacks
 from scene.gaussian_model import GaussianModel
@@ -44,11 +41,7 @@ class Scene:
         self.test_cameras = {}
 
         if os.path.exists(os.path.join(args.source_path, "sparse")):
-            scene_info = sceneLoadTypeCallbacks["Colmap"](
-                args.source_path, args.images, args.eval,
-                image_manifest=getattr(args, 'image_manifest', ''),
-                sparse_subdir=getattr(args, 'sparse_subdir', 'sparse/0'),
-                init_ply=getattr(args, 'init_ply', ''))
+            scene_info = sceneLoadTypeCallbacks["Colmap"](args.source_path, args.images, args.eval)
         elif os.path.exists(os.path.join(args.source_path, "transforms_train.json")):
             print("Found transforms_train.json file, assuming Blender data set!")
             scene_info = sceneLoadTypeCallbacks["Blender"](args.source_path, args.white_background, args.eval)
@@ -74,8 +67,6 @@ class Scene:
             random.shuffle(scene_info.test_cameras)  # Multi-res consistent random shuffling
 
         self.cameras_extent = scene_info.nerf_normalization["radius"]
-        if getattr(args, 'camera_extent_override', 0) > 0:
-            self.cameras_extent = args.camera_extent_override
 
         for resolution_scale in resolution_scales:
             print("Loading Training Cameras")
@@ -93,10 +84,7 @@ class Scene:
 
     def save(self, iteration):
         point_cloud_path = os.path.join(self.model_path, "point_cloud/iteration_{}".format(iteration))
-        with tempfile.TemporaryDirectory(prefix='fastgs_ply_') as temporary:
-            local = Path(temporary) / 'point_cloud.ply'
-            self.gaussians.save_ply(str(local))
-            publish_file(local, Path(point_cloud_path) / 'point_cloud.ply')
+        self.gaussians.save_ply(os.path.join(point_cloud_path, "point_cloud.ply"))
 
     def getTrainCameras(self, scale=1.0):
         return self.train_cameras[scale]

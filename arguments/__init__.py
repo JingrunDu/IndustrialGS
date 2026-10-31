@@ -54,10 +54,6 @@ class ModelParams(ParamGroup):
         self._white_background = False
         self.data_device = "cuda"
         self.eval = False
-        self.image_manifest = ""
-        self.sparse_subdir = "sparse/0"
-        self.init_ply = ""
-        self.camera_extent_override = 0.0
         # IndustrialGS: semantic weighting params are consumed during camera
         # loading (loadCam receives ModelParams), so they must live here.
         self.use_semantic_weight = False      # enable per-pixel semantic loss weighting

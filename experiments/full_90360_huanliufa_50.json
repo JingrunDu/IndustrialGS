@@ -1,12 +1,12 @@
 {
-  "id": "E09",
+  "id": "huanliufa_50",
   "trajectory": "T01",
-  "seed": 1,
-  "purpose": "6650 images: 100/150/200/300 passes",
-  "num_images": 6650,
-  "expected_sampling_passes": 300.0,
-  "manifest": "manifests/images_6650.txt",
-  "manifest_sha256": "8470d2eaf5c2057f3c160e4c4a1858dfc9825700032e319b5c262e8106265aa1",
+  "seed": 0,
+  "purpose": "Full 90360 images; 50 passes",
+  "num_images": 90360,
+  "expected_sampling_passes": 50,
+  "manifest": "manifests/images_full.txt",
+  "manifest_sha256": "e9695765e2af97e42bdb2671974462959f3e51a10bc5b43e764c178a8cacd513",
   "parameters": {
     "initialization": "fresh",
     "init_ply": "sparse/0/points3D.ply",
@@ -19,11 +19,11 @@
     ],
     "resolution": 1,
     "data_device": "cpu",
-    "position_lr_max_steps": 665000,
-    "densification_interval": 2216,
-    "densify_from_iter": 6650,
-    "densify_until_iter": 332500,
-    "opacity_reset_interval": 99750,
+    "position_lr_max_steps": 4518000,
+    "densification_interval": 15055,
+    "densify_from_iter": 45180,
+    "densify_until_iter": 2259000,
+    "opacity_reset_interval": 677700,
     "densify_grad_threshold": 0.0002,
     "grad_thresh": 0.0002,
     "grad_abs_thresh": 0.0003,
@@ -47,15 +47,13 @@
       "train/loss"
     ],
     "loss_log_interval": 100,
-    "iterations": 1995000,
+    "iterations": 4518000,
     "save_iterations": [
-      665000,
-      997500,
-      1330000,
-      1995000
+      2259000,
+      4518000
     ]
   },
   "overrides_from_common": {},
-  "baseline_throughput_only_hours": 4.568562791975818,
-  "output_relative": "beifen/data/3dgs_bushu/experiments_20260923/E09_T01_seed1"
+  "output_relative": "beifen/data/3dgs_bushu/full_90360_BATCH/huanliufa_50",
+  "method": "huanliufa"
 }

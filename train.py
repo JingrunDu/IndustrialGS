@@ -13,9 +13,6 @@ import torch
 import torch.nn.functional as F
 import numpy as np
 import os, random, time, csv
-import hashlib, json
-from pathlib import Path
-from utils.training_checkpoint import save_checkpoint, load_checkpoint
 from random import randint
 from lpipsPyTorch import lpips
 from utils.loss_utils import l1_loss
@@ -100,7 +97,7 @@ def compute_ms_ssim(img1, img2, levels=3):
     return ms_ssim_val
 
 
-def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoint_iterations, checkpoint, debug_from, websockets, runtime):
+def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoint_iterations, checkpoint, debug_from, websockets):
     global _MASK_SOURCE_PATH
     _MASK_SOURCE_PATH = dataset.source_path
 
@@ -109,25 +106,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     gaussians = GaussianModel(dataset.sh_degree, opt.optimizer_type)
     scene = Scene(dataset, gaussians)
     gaussians.training_setup(opt)
-    signature = dict(parameters=vars(opt), pipeline=vars(pipe), seed=runtime.seed,
-                     cameras=[c.image_path if not hasattr(c, 'cache') else c.cache.infos[c.index].image_path
-                              for c in scene.getTrainCameras()],
-                     model={k: v for k, v in vars(dataset).items() if k != 'model_path'})
-    # Portable identity across node-local/package paths.
-    signature['cameras'] = [os.path.relpath(p, dataset.source_path) for p in signature['cameras']]
-    signature['model'].pop('source_path', None)
-    signature['model'].pop('image_manifest', None)
-    signature['model']['init_ply'] = hashlib.sha256(Path(dataset.init_ply).read_bytes()).hexdigest() if dataset.init_ply else ''
-    signature = hashlib.sha256(json.dumps(signature, sort_keys=True).encode()).hexdigest()
     if checkpoint:
-        print(f'[恢复] 正在加载训练断点：{checkpoint}', flush=True)
-    restored = load_checkpoint(checkpoint, gaussians, opt, signature) if checkpoint else None
-    if restored:
-        first_iter = restored['iteration']
-        offset = int(os.environ.get('TRAIN_ITERATION_OFFSET', '0'))
-        if offset and offset != first_iter:
-            raise ValueError('Update iteration offset differs from checkpoint iteration')
-        print(f'[恢复完成] 累计步数：{first_iter}；高斯数量：{len(gaussians.get_xyz)}；模型、优化器及随机状态已恢复', flush=True)
+        (model_params, first_iter) = torch.load(checkpoint)
+        gaussians.restore(model_params, opt)
 
     bg_color = [1, 1, 1] if dataset.white_background else [0, 0, 0]
     background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
@@ -135,69 +116,35 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     iter_start = torch.cuda.Event(enable_timing = True)
     iter_end = torch.cuda.Event(enable_timing = True)
 
-    cameras = scene.getTrainCameras()
-    viewpoint_indices = restored['remaining'] if restored else []
-    stop_at = min(runtime.stop_after or opt.iterations, opt.iterations)
-    if stop_at <= first_iter:
-        raise ValueError('stop_after must exceed checkpoint iteration')
+    viewpoint_stack = scene.getTrainCameras().copy()
+    viewpoint_indices = list(range(len(viewpoint_stack)))
 
     # record time
     optim_start = torch.cuda.Event(enable_timing=True)
     optim_end = torch.cuda.Event(enable_timing=True)
     total_time = 0.0
 
-    ema_loss_for_log = restored['ema'] if restored else 0.0
+    ema_loss_for_log = 0.0
     # Disable tqdm's background monitor thread to avoid a multi-thread deadlock
     # that occurs when set_postfix/refresh contends with the monitor thread,
     # especially when stdout is redirected through tee to a non-tty file.
     tqdm.monitor_interval = 0
     progress_bar = tqdm(
-        total=stop_at, initial=first_iter,
+        range(first_iter, opt.iterations),
         desc="Training progress",
         mininterval=1.0,
         miniters=100,
     )
     first_iter += 1
-    bg = restored['background'] if restored else (torch.rand((3), device="cuda") if opt.random_background else background)
+    bg = torch.rand((3), device="cuda") if opt.random_background else background
 
     # Initialize loss CSV logger
     loss_csv_path = os.path.join(dataset.model_path, "loss_log.csv")
-    if checkpoint and os.path.exists(loss_csv_path):
-        # Remove rows beyond the checkpoint before replaying those iterations.
-        with open(loss_csv_path) as handle:
-            rows = handle.readlines()
-        with open(loss_csv_path, 'w', newline='') as handle:
-            handle.writelines(r for r in rows if r.strip() and
-                              (r.startswith('iteration,') or int(r.split(',')[0]) < first_iter))
-    needs_header = not os.path.exists(loss_csv_path) or not checkpoint
-    loss_csv_file = open(loss_csv_path, mode='a' if checkpoint else 'w', newline='')
+    loss_csv_file = open(loss_csv_path, mode='w', newline='')
     loss_csv_writer = csv.writer(loss_csv_file)
-    if needs_header:
-        loss_csv_writer.writerow(["iteration", "l1_loss", "ssim", "total_loss", "ema_loss", "num_gaussians"])
+    loss_csv_writer.writerow(["iteration", "l1_loss", "ssim", "total_loss", "ema_loss", "num_gaussians"])
 
-    def checkpoint_now(iteration):
-        save_checkpoint(Path(dataset.model_path) / 'checkpoints' / f'checkpoint_{iteration}.pth',
-                        gaussians, iteration, viewpoint_indices, ema_loss_for_log, bg, signature)
-
-    def finish_iteration(iteration):
-        guarded = runtime.max_gaussians > 0 and gaussians.get_xyz.shape[0] >= runtime.max_gaussians
-        memory_guarded = torch.cuda.memory_allocated() >= torch.cuda.get_device_properties(0).total_memory * 0.90
-        guarded = guarded or memory_guarded
-        if iteration in saving_iterations or iteration == stop_at or guarded:
-            scene.save(iteration)
-        if (iteration in checkpoint_iterations or iteration == stop_at or guarded
-                or (runtime.checkpoint_every > 0 and iteration % runtime.checkpoint_every == 0)):
-            checkpoint_now(iteration)
-            status = ('paused_resource' if guarded else 'complete' if iteration == opt.iterations
-                      else 'paused_stage' if iteration == stop_at else 'running')
-            Path(dataset.model_path, 'training_state.json').write_text(json.dumps(dict(
-                status=status, iteration=iteration, intended_iterations=opt.iterations,
-                gaussians=int(gaussians.get_xyz.shape[0])), indent=2))
-        if guarded:
-            print('[暂停] 达到高斯数量或显存软上限；已保存断点，没有自动裁剪。', flush=True)
-        return guarded
-
-    for iteration in range(first_iter, stop_at + 1):
+    for iteration in range(first_iter, opt.iterations + 1):
 
         if websockets:
             if network_gui_ws.curr_id >= 0 and network_gui_ws.curr_id < len(scene.getTrainCameras()):
@@ -216,15 +163,12 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             gaussians.oneupSHdegree()
 
         # Pick a random Camera
-        if not viewpoint_indices:
-            viewpoint_indices = list(range(len(cameras)))
-            random.shuffle(viewpoint_indices)
-        selected = viewpoint_indices.pop()
-        if hasattr(cameras[selected], 'cache'):
-            cameras[selected].cache.prefetch([selected, *viewpoint_indices[-15:][::-1]])
-            viewpoint_cam = cameras[selected].materialize()
-        else:
-            viewpoint_cam = cameras[selected]
+        if not viewpoint_stack:
+            viewpoint_stack = scene.getTrainCameras().copy()
+            viewpoint_indices = list(range(len(viewpoint_stack)))
+        rand_idx = randint(0, len(viewpoint_indices) - 1)
+        viewpoint_cam = viewpoint_stack.pop(rand_idx)
+        _ = viewpoint_indices.pop(rand_idx)
 
         # Render
         if (iteration - 1) == debug_from:
@@ -235,9 +179,6 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
 
         # Skip iteration if no gaussians are visible (avoids gradient shape mismatch)
         if not visibility_filter.any():
-            progress_bar.update(1)
-            if finish_iteration(iteration):
-                break
             continue
 
         # Loss computation with frequency-aware weighting and MS-SSIM
@@ -316,7 +257,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             ema_loss_for_log = 0.4 * loss.item() + 0.6 * ema_loss_for_log
             if iteration % 10 == 0:
                 progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{7}f}"})
-            progress_bar.update(1)
+                progress_bar.update(10)
+            if iteration == opt.iterations:
+                progress_bar.close()
 
             # Write loss to CSV every 100 iterations
             if iteration % 100 == 0:
@@ -333,6 +276,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             iter_time = iter_start.elapsed_time(iter_end)
             # Log and save
             # training_report(tb_writer, iteration, Ll1, loss, l1_loss, iter_time, testing_iterations, scene, render_fastgs, (pipe, background, opt.mult))
+            if (iteration in saving_iterations):
+                print("\n[ITER {}] Saving Gaussians".format(iteration))
+                scene.save(iteration)
             
             optim_start.record()
             
@@ -384,7 +330,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
                           f"thresh={threshold_val.item():.4f})")
         
             # Optimization step
-            if iteration <= opt.iterations:
+            if iteration < opt.iterations:
                 if opt.optimizer_type == "default":
                     gaussians.optimizer_step(iteration)
                 elif opt.optimizer_type == "sparse_adam":
@@ -397,14 +343,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             torch.cuda.synchronize()
             optim_time = optim_start.elapsed_time(optim_end)
             total_time += (iter_time + optim_time) / 1e3
-            if finish_iteration(iteration):
-                break
 
     # scene.save(iteration)
     loss_csv_file.close()
-    progress_bar.close()
-    if tb_writer:
-        tb_writer.close()
     print(f"Gaussian number: {gaussians._xyz.shape[0]}")
     print(f"Training time: {total_time}")
     print(f"Loss log saved to: {loss_csv_path}")
@@ -425,7 +366,7 @@ def prepare_output_and_logger(args):
 
     # Create Tensorboard writer
     tb_writer = None
-    if TENSORBOARD_FOUND and os.environ.get('ENABLE_TENSORBOARD', '0') == '1':
+    if TENSORBOARD_FOUND:
         tb_writer = SummaryWriter(args.model_path)
     else:
         print("Tensorboard not available: not logging progress")
@@ -487,14 +428,10 @@ if __name__ == "__main__":
     parser.add_argument("--test_iterations", nargs="+", type=int, default=[30_000])
     parser.add_argument("--save_iterations", nargs="+", type=int, default=[30_000])
     parser.add_argument("--quiet", action="store_true")
-    parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[])
+    parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[30_000])
     parser.add_argument("--start_checkpoint", type=str, default = None)
     parser.add_argument("--websockets", action='store_true', default=False)
     parser.add_argument("--benchmark_dir", type=str, default=None)
-    parser.add_argument('--seed', type=int, default=0)
-    parser.add_argument('--stop_after', type=int, default=0)
-    parser.add_argument('--checkpoint_every', type=int, default=100000)
-    parser.add_argument('--max_gaussians', type=int, default=6000000)
     args = parser.parse_args(sys.argv[1:])
     args.save_iterations.append(args.iterations)
     
@@ -502,10 +439,6 @@ if __name__ == "__main__":
 
     # Initialize system state (RNG)
     safe_state(args.quiet)
-    random.seed(args.seed)
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-    torch.cuda.manual_seed_all(args.seed)
 
     if(args.websockets):
         network_gui_ws.init(args.ip, args.port)
@@ -520,8 +453,7 @@ if __name__ == "__main__":
         args.checkpoint_iterations, 
         args.start_checkpoint, 
         args.debug_from, 
-        args.websockets,
-        args
+        args.websockets
     )
 
     # All done
